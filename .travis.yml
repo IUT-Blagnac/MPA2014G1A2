@@ -16,16 +16,20 @@ script:
   - python asciidoc-8.6.7/asciidoc.py --version
   - dot -V
   - casperjs --version
-  - echo Hello from DUT INFO Blagnac
   - ls -alF
   - cd sprint_5
-  - javac -cp .:./bin -d ./bin ./src/HelloMonde.java
-  - javac -cp .:./bin:../junit.jar -d ./bin ./src/HelloMondeTest.java
-  - java -jar ../plantuml.jar -Tpng -o srcdoc/images srcdoc/diag0.puml
-  - python ../asciidoc-8.6.7/asciidoc.py -a data-uri -o srcdoc/presentationFinale.html srcdoc/presentationFinale.txt
-  - ls -alF srcdoc
+  - javac -cp .:./bin -d ./bin ./src/*.java
+  - python ../asciidoc-8.6.7/asciidoc.py -a data-uri -o doc/presentationFinale.html srcdoc/presentationFinale.txt
+  - ls -alF doc
+  - cp -r ./data ./bin
   - cd bin
-  - java -cp .:../../junit.jar HelloMondeTest
-  - cd ../OPTIweb/test
-  - cp OPTIwebprof.html /tmp/OPTIweb.html
+  - java -cp .:../../junit.jar MakeOPTIwebTest
+  - cd ..
+  - cp ./bin/OPTIweb.html ./OPTIweb
+  - cd ./OPTIweb/test
   - casperjs test casperAccueil.js
+  - casperjs test casperEtudiants.js
+  - casperjs test casperIntervenants.js
+  - casperjs test casperProjets.js
+  - casperjs test casperSujets.js
+  - casperjs test casperCredits.js
