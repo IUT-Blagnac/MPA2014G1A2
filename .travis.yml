@@ -1,3 +1,5 @@
+notifications:
+  email: false
 before_install:
   - wget http://algec.iut-blagnac.fr/~jmi/MPA/src/junit.jar
   - "sudo apt-get install graphviz 2>&1 | tail -n 2"
@@ -7,6 +9,7 @@ before_script:
   - wget https://github.com/n1k0/casperjs/archive/1.0.3.tar.gz -O /tmp/casper.tar.gz
   - tar -xvf /tmp/casper.tar.gz
   - export PATH=$PATH:$PWD/casperjs-1.0.3/bin/
+  - export LANG=en_US.UTF-8
 language: java
 script:
   - java -version
