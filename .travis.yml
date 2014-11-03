@@ -2,6 +2,7 @@ language: java
 script:
   - java -version
   - javac -version
+  - ls -alF
   - python -V
   - phantomjs -v
   - echo Hello from DUT INFO Blagnac
