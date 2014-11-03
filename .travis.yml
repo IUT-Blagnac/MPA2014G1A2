@@ -1,3 +1,5 @@
+notifications:
+  email: false
 before_install:
   - wget http://algec.iut-blagnac.fr/~jmi/MPA/src/junit.jar
   - "sudo apt-get install graphviz 2>&1 | tail -n 2"
