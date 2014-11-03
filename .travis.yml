@@ -7,7 +7,7 @@ before_script:
   - wget https://github.com/n1k0/casperjs/archive/1.0.3.tar.gz -O /tmp/casper.tar.gz
   - tar -xvf /tmp/casper.tar.gz
   - export PATH=$PATH:$PWD/casperjs-1.0.3/bin/
-  - export LANG=en_US.UTF-8
+  - export LANG=fr_FR.UTF-8
 language: java
 script:
   - java -version
