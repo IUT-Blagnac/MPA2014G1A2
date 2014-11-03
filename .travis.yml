@@ -1,5 +1,3 @@
-notifications:
-  email: false
 before_install:
   - wget http://algec.iut-blagnac.fr/~jmi/MPA/src/junit.jar
   - "sudo apt-get install graphviz 2>&1 | tail -n 2"
@@ -22,6 +20,7 @@ script:
   - ls -alF
   - cd sprint_5
   - ls -alF
+  - javac -encoding utf8 ./src/*.java
   - javac -cp .:./bin -d ./bin ./src/*.java
   - python ../asciidoc-8.6.7/asciidoc.py -a data-uri -o doc/presentationFinale.html srcdoc/presentationFinale.txt
   - ls -alF doc
