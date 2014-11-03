@@ -1,0 +1,38 @@
+before_install:
+  - wget http://algec.iut-blagnac.fr/~jmi/MPA/src/junit.jar
+  - "sudo apt-get install graphviz 2>&1 | tail -n 2"
+  - wget http://algec.iut-blagnac.fr/~jmi/MPA/src/plantuml.jar
+  - hg clone -r 8.6.7 https://asciidoc.googlecode.com/hg/ asciidoc-8.6.7
+before_script:
+  - wget https://github.com/n1k0/casperjs/archive/1.0.3.tar.gz -O /tmp/casper.tar.gz
+  - tar -xvf /tmp/casper.tar.gz
+  - export PATH=$PATH:$PWD/casperjs-1.0.3/bin/
+  - export LANG=fr_FR.UTF-8
+language: java
+script:
+  - java -version
+  - javac -version
+  - python -V
+  - phantomjs -v
+  - python asciidoc-8.6.7/asciidoc.py --version
+  - dot -V
+  - casperjs --version
+  - ls -alF
+  - cd sprint_5
+  - ls -alF
+  #- javac -encoding iso-8859-1 -cp .:../../junit.jar -d ./bin ./src/*.java
+  - python ../asciidoc-8.6.7/asciidoc.py -a data-uri -o doc/presentationFinale.html srcdoc/presentationFinale.txt
+  - ls -alF doc
+  - cp -r ./data ./bin
+  - cd bin
+  - java -cp .:../../junit.jar MakeOPTIwebTest
+  - java -cp . MakeOPTIweb
+  - cd ..
+  - cp ./bin/OPTIweb.html ./OPTIweb
+  - cd ./OPTIweb/test
+  - casperjs test casperAccueil.js
+  - casperjs test casperEtudiants.js
+  - casperjs test casperIntervenants.js
+  - casperjs test casperProjets.js
+  - casperjs test casperSujets.js
+  - casperjs test casperCredits.js
