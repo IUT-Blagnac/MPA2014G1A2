@@ -18,6 +18,7 @@ script:
   - casperjs --version
   - ls -alF
   - cd sprint_5
+  - ls -alF
   - javac -cp .:./bin -d ./bin ./src/*.java
   - python ../asciidoc-8.6.7/asciidoc.py -a data-uri -o doc/presentationFinale.html srcdoc/presentationFinale.txt
   - ls -alF doc
