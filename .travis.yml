@@ -32,7 +32,7 @@ script:
   - cd ./OPTIweb/test
   - casperjs test casperAccueil.js
   - casperjs test casperEtudiants.js
-  - casperjs test casperProjets.js
   - casperjs test casperIntervenants.js
+  - casperjs test casperProjets.js
   - casperjs test casperSujets.js
   - casperjs test casperCredits.js
